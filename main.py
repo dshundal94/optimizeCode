@@ -35,6 +35,6 @@ def main(source_directory, file_extensions):
                 print(f"Saved optimization explanations for {new_file_path} to {explanations_file_path}")
 
 if __name__ == "__main__":
-    source_directory = "your_directory"
+    source_directory = r"/Users/hundalitis/Documents/optimizeCode"
     file_extensions = [".dart", ".flutter", ".js", ".py"]  # Add more file extensions as needed
     main(source_directory, file_extensions)
