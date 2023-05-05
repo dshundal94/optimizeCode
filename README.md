@@ -6,36 +6,36 @@ This project uses OpenAI's GPT-4 API to optimize and generate tests for code fil
 
 1. Clone this repository:
 
-    ```
+    
     git clone https://github.com/your_username/repository_name.git
     cd repository_name
-    ```
+    
 
 2. Install the required packages:
 
-    ```
+
     pip install -r requirements.txt
-    ```
+    
 
 3. Set up your OpenAI API key as an environment variable:
 
 ### For Linux or macOS:
 
-    ```
+    
     export OPENAI_API_KEY="your_api_key_here"
-    ```
+    
 
 ### For Windows (in the Command Prompt):
 
-    ```
+    
     set OPENAI_API_KEY="your_api_key_here"
-    ```
+    
 
 ### For Windows (in PowerShell):
 
-    ```
+    
     $env:OPENAI_API_KEY="your_api_key_here"
-    ```
+    
 
 Replace `your_api_key_here` with your actual OpenAI API key.
 
@@ -43,9 +43,9 @@ Replace `your_api_key_here` with your actual OpenAI API key.
 
 To optimize and generate tests for code files in a directory, run the following command:
 
-    ```
+    
     python main.py
-    ```
+
 
 This will create a new directory with the optimized code and test files. The new directory will have the same name as the original directory, but with `_GPT` appended to the end.
 
@@ -55,10 +55,10 @@ The script processes files with specific extensions. By default, it processes `.
 
 In main.py, you can change the input and output directory paths. By default, the input directory is ./input_directory, and the output directory is ./output_directory. Modify the following lines with your desired paths:
 
-    '''
+    
     input_directory = './input_directory'
     output_directory = './output_directory'
-    '''
-
     
+
+
 
