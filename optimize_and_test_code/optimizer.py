@@ -8,7 +8,7 @@ def optimize_code(file_contents):
     prompt = f"Optimize the following code for mobile apps and explain the changes:\n\n{file_contents}\n\nOptimized code:\n"
     
     response = openai.Completion.create(
-        engine="text-davinci-002",
+        model="gpt-4",
         prompt=prompt,
         max_tokens=2048,
         n=1,
@@ -21,7 +21,7 @@ def optimize_code(file_contents):
     prompt = f"Explanations for the optimizations:\n"
 
     response = openai.Completion.create(
-        engine="text-davinci-002",
+        model="gpt-4",
         prompt=prompt,
         max_tokens=1024,
         n=1,

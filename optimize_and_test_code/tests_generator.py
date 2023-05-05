@@ -7,7 +7,7 @@ def generate_tests(file_contents):
     prompt = f"Generate test cases for the following code:\n\n{file_contents}\n\nTest cases:\n"
 
     response = openai.Completion.create(
-        engine="text-davinci-002",
+        engine="gpt-4",
         prompt=prompt,
         max_tokens=1024,
         n=1,
