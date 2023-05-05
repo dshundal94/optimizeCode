@@ -9,32 +9,36 @@ This project uses OpenAI's GPT-4 API to optimize and generate tests for code fil
 ```bash
 git clone https://github.com/your_username/repository_name.git
 cd repository_name
+'''
 
 
 2. Install the required packages:
 
-pip install -r requirements.txt
+'''pip install -r requirements.txt'''
 
 3.Set up your OpenAI API key as an environment variable:
 
 For Linux or macOS:
 
-export OPENAI_API_KEY="your_api_key_here"
+'''export OPENAI_API_KEY="your_api_key_here"
+'''
 
 For Windows (in the Command Prompt):
 
-set OPENAI_API_KEY="your_api_key_here"
-
+'''set OPENAI_API_KEY="your_api_key_here"
+'''
 For Windows (in PowerShell):
 
-$env:OPENAI_API_KEY="your_api_key_here"
+'''$env:OPENAI_API_KEY="your_api_key_here"
+
+'''
 
 Replace your_api_key_here with your actual OpenAI API key.
 
 Usage
 To optimize and generate tests for code files in a directory, run the following command:
 
-python main.py
+'''python main.py'''
 
 This will create a new directory with the optimized code and test files. The new directory will have the same name as the original directory, but with _GPT appended to the end.
 
