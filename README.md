@@ -5,18 +5,17 @@ This project uses OpenAI's GPT-4 API to optimize and generate tests for code fil
 ## Setup
 
 1. Clone this repository:
-    '''
+
+    ```
     git clone https://github.com/dshundal94/optimizeCode.git
     cd optimizeCode
-    '''
-    
+    ```
 
 2. Install the required packages:
 
-    '''
+    ```
     pip install -r requirements.txt
-    '''
-    
+    ```
 
 3. Set up your OpenAI API key as an environment variable:
 
