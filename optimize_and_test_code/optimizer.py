@@ -42,11 +42,6 @@ def optimize_code(file_contents):
     )
 
     explanations = response.choices[0].message['content'].strip()
+    
 
-    # Comment out explanations
-    commented_explanations = "\n".join([f"# {line}" for line in explanations.split("\n")])
-
-    # Combine optimized code and commented explanations
-    combined_code = f"{optimized_code}\n\n{commented_explanations}"
-
-    return combined_code, explanations
+    return optimized_code, explanations

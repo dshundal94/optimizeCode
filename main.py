@@ -1,6 +1,5 @@
-from optimize_and_test_code.optimizer import optimize_code
-from optimize_and_test_code.tests_generator import generate_tests
 import os
+from optimize_and_test_code.optimizer import optimize_code
 
 def main(source_directory, file_extensions):
     destination_directory = f"{source_directory}_GPT"
@@ -8,38 +7,29 @@ def main(source_directory, file_extensions):
 
     for root, _, files in os.walk(source_directory):
         for file in files:
-            if any(file.endswith(extension) for extension in file_extensions):
-                file_path = os.path.join(root, file)
-                with open(file_path, "r") as f:
-                    contents = f.read()
+            if not any(file.endswith(extension) for extension in file_extensions):
+                continue
+            
+            file_path = os.path.join(root, file)
+            with open(file_path, "r") as f:
+                contents = f.read().strip()
 
-                optimized_contents, explanations = optimize_code(contents)
-                test_cases = generate_tests(contents)
+            if not contents:  # Skip empty files
+                continue
 
-                new_root = root.replace(source_directory, destination_directory)
-                os.makedirs(new_root, exist_ok=True)
+            optimized_contents, _ = optimize_code(contents)
 
-                # Save the optimized code in a new file
-                new_file_path = os.path.join(new_root, file)
-                with open(new_file_path, "w") as f:
-                    f.write(optimized_contents)
-                print(f"Optimized {file_path} and saved to {new_file_path}")
+            new_root = root.replace(source_directory, destination_directory)
+            os.makedirs(new_root, exist_ok=True)
 
-                # Save the test cases in a new file with the same extension
-                test_file_name = os.path.splitext(file)[0] + '_test' + os.path.splitext(file)[1]
-                test_file_path = os.path.join(new_root, test_file_name)
-                with open(test_file_path, "w") as f:
-                    f.write(test_cases)
-                print(f"Generated test cases for {new_file_path} and saved to {test_file_path}")
-
-                # Save the explanations in a new text file
-                explanations_file_name = os.path.splitext(file)[0] + '_explanations.txt'
-                explanations_file_path = os.path.join(new_root, explanations_file_name)
-                with open(explanations_file_path, "w") as f:
-                    f.write(explanations)
-                print(f"Saved optimization explanations for {new_file_path} to {explanations_file_path}")
+            # Save the optimized code
+            new_file_name = os.path.splitext(file)[0] + os.path.splitext(file)[1]
+            new_file_path = os.path.join(new_root, new_file_name)
+            with open(new_file_path, "w") as f:
+                f.write(optimized_contents)
+            print(f"Optimized {file_path} and {new_file_path}")
 
 if __name__ == "__main__":
     source_directory = r"/Users/hundalitis/Documents/optimizeCode"
-    file_extensions = [".dart", ".flutter", ".js", ".py"]  # Add more file extensions as needed
+    file_extensions = [".dart", ".flutter", ".js", ".py"]
     main(source_directory, file_extensions)

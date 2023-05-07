@@ -1,6 +1,6 @@
 # Code Optimization and Testing with GPT-4
 
-This project uses OpenAI's GPT-4 API to optimize and generate tests for code files in a given directory.
+This project uses OpenAI's GPT-4 API to optimize for code files in a given directory.
 
 ## Setup
 
@@ -41,13 +41,13 @@ Replace `your_api_key_here` with your actual OpenAI API key.
 
 ## Usage
 
-To optimize and generate tests for code files in a directory, run the following command:
+To optimize for code files in a directory, run the following command:
 
     
     python main.py
 
 
-This will create a new directory with the optimized code and test files. The new directory will have the same name as the original directory, but with `_GPT` appended to the end.
+This will create a new directory with the optimized code. The new directory will have the same name as the original directory, but with `_GPT` appended to the end.
 
 The script processes files with specific extensions. By default, it processes `.dart`, `.flutter`,
 
