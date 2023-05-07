@@ -16,29 +16,29 @@ def optimize_code(file_contents):
     """
 
     # Prompt for the original code
-    messages = [
-        {"role": "system", "content": "You are a helpful assistant that optimizes code for mobile apps and explains the changes."},
-        {"role": "user", "content": f"Optimize the following code for mobile apps and explain the changes:\n\n{file_contents}"}
-    ]
+    prompt = f"Optimize the following code for mobile apps and explain the changes:\n\n{file_contents}\n\nOptimized code:\n"
 
     # Use OpenAI's GPT-4 to generate optimized code
     response = openai.ChatCompletion.create(
         model="gpt-4",
-        messages=messages,
-        max_tokens=2048,
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant that optimizes code for mobile apps and explains the changes."},
+            {"role": "user", "content": prompt},
+        ],
     )
 
     optimized_code = response.choices[0].message['content'].strip()
 
     # Prompt for explanations of optimizations
-    messages.append({"role": "assistant", "content": optimized_code})
-    messages.append({"role": "user", "content": "Explanations for the optimizations:"})
+    prompt = f"Explanations for the optimizations:\n"
 
     # Use OpenAI's GPT-4 to generate explanations for the optimizations
     response = openai.ChatCompletion.create(
         model="gpt-4",
-        messages=messages,
-        max_tokens=1024,
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt},
+        ],
     )
 
     explanations = response.choices[0].message['content'].strip()

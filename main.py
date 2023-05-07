@@ -25,14 +25,16 @@ def main(source_directory, file_extensions):
                     f.write(optimized_contents)
                 print(f"Optimized {file_path} and saved to {new_file_path}")
 
-                # Save the test cases in a new file
-                test_file_path = new_file_path.replace(".dart", "_test.dart")
+                # Save the test cases in a new file with the same extension
+                test_file_name = os.path.splitext(file)[0] + '_test' + os.path.splitext(file)[1]
+                test_file_path = os.path.join(new_root, test_file_name)
                 with open(test_file_path, "w") as f:
                     f.write(test_cases)
                 print(f"Generated test cases for {new_file_path} and saved to {test_file_path}")
 
-                # Save the explanations in a new file
-                explanations_file_path = new_file_path.replace(".dart", "_explanations.txt")
+                # Save the explanations in a new text file
+                explanations_file_name = os.path.splitext(file)[0] + '_explanations.txt'
+                explanations_file_path = os.path.join(new_root, explanations_file_name)
                 with open(explanations_file_path, "w") as f:
                     f.write(explanations)
                 print(f"Saved optimization explanations for {new_file_path} to {explanations_file_path}")
